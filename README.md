@@ -96,3 +96,54 @@ Took 0.7935 seconds
 ```
 
 其中`HBaseClientDemo`为运行主类，`HBaseConn`是管理HBase连接的类，`HBaseUtil`是HBase工具类，实现了创建表、删除表、添加数据、删除数据、单rowKey查询、全表查询功能。
+## 4. hbase shell实践
+```
+# 删除命名空间（前提命名空间内没有表）
+drop_namespace 'qinben_shell'
+
+# 创建命名空间
+create_namespace 'qinben_shell'
+
+# 创建表
+create 'qinben_shell:student','info','score'
+
+# 插入数据
+put 'qinben_shell:student','Tom','info:student_id' ,'20210000000001'
+put 'qinben_shell:student','Jerry','info:student_id' ,'20210000000002'
+put 'qinben_shell:student','Jack','info:student_id' ,'20210000000003'
+put 'qinben_shell:student','Rose','info:student_id' ,'20210000000004'
+put 'qinben_shell:student','qinben','info:student_id' ,'G20210735010190'
+put 'qinben_shell:student','Tom','info:class' ,'1'
+put 'qinben_shell:student','Jerry','info:class' ,'1'
+put 'qinben_shell:student','Jack','info:class' ,'2'
+put 'qinben_shell:student','Rose','info:class' ,'2'
+put 'qinben_shell:student','qinben','info:class','2'
+put 'qinben_shell:student','Tom','score:understanding','75'
+put 'qinben_shell:student','Jerry','score:understanding','85'
+put 'qinben_shell:student','Jack','score:understanding','80'
+put 'qinben_shell:student','Rose','score:understanding','60'
+put 'qinben_shell:student','qinben','score:understanding','100'
+put 'qinben_shell:student','Tom','score:programming','82'
+put 'qinben_shell:student','Jerry','score:programming','67'
+put 'qinben_shell:student','Jack','score:programming','80'
+put 'qinben_shell:student','Rose','score:programming','61'
+put 'qinben_shell:student','qinben','score:programming','100'
+
+# 获取数据
+get 'qinben_shell:student','qinben'
+# 扫描表
+scan 'qinben_shell:student'
+# 统计总数
+count 'qinben_shell:student'
+# 删除数据
+delete 'qinben_shell:student','qinben','info:student_id'
+# 删除表：先 disable 再 drop
+disable 'qinben_shell:student'
+drop 'qinben_shell:student'
+
+# 退出
+exit
+
+# 文件执行
+hbase shell ./student.txt
+```
