@@ -21,7 +21,7 @@
 
 4. 部分运行截图如下：
 
-![](C:\Users\84738\Desktop\homework03.png)
+![](img_readme/homework03.png)
 
 5. 使用`hbase shell`查看创建的表
 
@@ -54,7 +54,7 @@ Took 0.7935 seconds
 
 ```
 
-![image-20210801092444266](C:\Users\84738\AppData\Roaming\Typora\typora-user-images\image-20210801092444266.png)
+![](img_readme/homework03_2.png)
 
 ## 3. 主要代码目录结构
 ```
